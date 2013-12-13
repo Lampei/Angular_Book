@@ -1,0 +1,33 @@
+<html ng-app>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="styles/styles.css" />
+    <title>warning and errors via css</title>
+  </head>
+  <body>
+  <div ng-controller="HeaderController">
+    <div ng-class="{error: isError, warning: isWarning}">{{messageText}}</div>
+    <button ng-click="showError()">Simulate Error</button>
+    <button ng-click="showWarning()">Simulate Warning</button>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  <script>
+    function HeaderController($scope) {
+      $scope.isError = false;
+      $scope.isWarning = false;
+      
+      $scope.showError = function () {
+        $scope.messageText = 'This is an error';
+        $scope.isError = true;
+        $scope.isWarning = false;
+      }
+      
+      $scope.showWarning = function () {
+        $scope.messageText = 'Just a warning.  Please carry on';
+        $scope.isError = false;
+        $scope.isWarning = true;
+      }
+    }
+  </script>
+  </body>
+</html>
