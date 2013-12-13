@@ -1,10 +1,13 @@
 <html ng-app>
 <body>
-  <ul ng-controller="StudentListController">
-    <li ng-repeat="student in students">
-      <a ng-href="/student/view/{{student.id}}">{{student.name}}</a>
-    </li>
-  </ul>
+  <div ng-controller="StudentListController">
+    <ul>
+      <li ng-repeat="student in students">
+        <a ng-href="/student/view/{{student.id}}">{{student.name}}</a>
+      </li>
+    </ul>
+    <button ng-click="insertTom()">Insert Tom</button>
+  </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 <script>
   var students = [{name:"Mary Contrary", id:1},
@@ -13,6 +16,10 @@
                   
   function StudentListController($scope) {
     $scope.students = students;
+    
+    $scope.insertTom = function () {
+      $scope.students.splice(1, 0, {name:'Tom Thumb', id:4});
+    };
   }
 </script>
 </body>
